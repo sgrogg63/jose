@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenue Pierre</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    .quote {
+      font-size: 24px;
+      font-style: italic;
+      margin: 20px 0;
+    }
+    .author {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    .links a {
+      margin: 0 15px;
+      color: #ffcc00;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    .clock {
+      font-size: 36px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Bienvenue, Pierre</h1>
+    <div class="clock" id="clock"></div>
+    <div class="quote" id="quote"></div>
+    <div class="author" id="author"></div>
+    <div class="links">
+      <a href="https://www.google.com">Google</a>
+      <a href="https://www.youtube.com">YouTube</a>
+      <a href="https://fr.wikipedia.org">Wikipedia</a>
+      <a href="https://www.lemonde.fr">Le Monde</a>
+    </div>
+  </div>
+
+  <script>
+    // Horloge en direct
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      document.getElementById('clock').textContent = time;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Citations du jour
+    const citations = [
+      { texte: "Le succès n'est pas final. L'échec n'est pas fatal. C'est le courage de continuer qui compte.", auteur: "Winston Churchill" },
+      { texte: "La vie, c’est comme une bicyclette, il faut avancer pour ne pas perdre l’équilibre.", auteur: "Albert Einstein" },
+      { texte: "Fais de ta vie un rêve, et d’un rêve une réalité.", auteur: "Antoine de Saint-Exupéry" },
+      { texte: "Il n’y a pas de vent favorable pour celui qui ne sait pas où il va.", auteur: "Sénèque" },
+      { texte: "Commence là où tu es. Utilise ce que tu as. Fais ce que tu peux.", auteur: "Arthur Ashe" }
+    ];
+    const index = new Date().getDate() % citations.length;
+    document.getElementById("quote").textContent = `"${citations[index].texte}"`;
+    document.getElementById("author").textContent = `— ${citations[index].auteur}`;
+  </script>
+</body>
+</html>
+
